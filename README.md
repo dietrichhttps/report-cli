@@ -14,8 +14,8 @@ CLI-утилита для анализа эффективности разраб
 
 ```bash
 # Клонируем и заходим в папку
-git clone https://github.com/твой_ник/report-api.git
-cd report-api
+git clone https://github.com/dietrichhttps/report-cli.git
+cd report-cli
 
 # Создаём виртуальное окружение (если ещё нет)
 python3 -m venv .venv
@@ -25,5 +25,5 @@ source .venv/bin/activate
 pip install -e .
 
 # Готово! Теперь можно запускать:
-report-api --files путь/к/файлам/*.csv --report performance
-report-api --files data/*.csv --report summary
+report-cli --files путь/к/файлам/*.csv --report performance
+report-cli --files data/*.csv --report summary
