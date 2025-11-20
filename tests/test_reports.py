@@ -13,30 +13,24 @@ def test_performance_report(employees):
 
     assert "Avg Performance" in output
     assert "Backend Developer" in output
-    # Первая строка после заголовка — самая высокая эффективность
     lines = output.splitlines()
-    assert "4.83" in lines[3]  # предположим, что бэкендеры лидируют
-
-# tests/test_reports.py
+    assert "4.83" in lines[3]
 
 def test_performance_report_sorting(employees):
-    """Проверяем, что отчёт performance сортирует позиции по убыванию средней эффективности"""
     report = PerformanceReport()
     output = report.generate(employees)
 
-    # Ищем строки с данными (те, что содержат "│" и число с точкой)
     perf_values = []
     for line in output.splitlines():
         if "│" in line and "." in line:
             parts = [p.strip() for p in line.split("│") if p.strip()]
             if len(parts) >= 2:
                 try:
-                    value = float(parts[-1])  # последнее — это Avg Performance
+                    value = float(parts[-1])
                     perf_values.append(value)
                 except ValueError:
                     continue
 
-    # Теперь проверяем, что значения идут по убыванию
     assert perf_values == sorted(perf_values, reverse=True), \
         f"Значения не отсортированы по убыванию: {perf_values}"
 
